@@ -1,0 +1,3 @@
+[submodule "thirdparty/tclap"]
+	path = thirdparty/tclap
+	url = https://github.com/xguerin/tclap.git
