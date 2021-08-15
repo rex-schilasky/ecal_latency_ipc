@@ -20,15 +20,15 @@ cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG ON)
 
-project(latency_rec_cb)
+project(latency_rec)
 
 find_package(eCAL REQUIRED)
 
-set(latency_rec_cb_src
-    src/latency_rec_cb.cpp
+set(latency_rec_src
+    src/latency_rec.cpp
 )
 
-ecal_add_sample(${PROJECT_NAME} ${latency_rec_cb_src})
+ecal_add_sample(${PROJECT_NAME} ${latency_rec_src})
 
 target_link_libraries(${PROJECT_NAME} eCAL::core)
 

@@ -20,11 +20,11 @@ cmake_minimum_required(VERSION 3.10)
 list(APPEND CMAKE_MODULE_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-project(ecal_latency VERSION "${ECAL_VERSION_STRING}")
+project(ecal_latency_ipc VERSION "${ECAL_VERSION_STRING}")
 set (CMAKE_CXX_STANDARD 14)
 
 # --------------------------------------------------------
 # cpp samples
 # --------------------------------------------------------
-add_subdirectory(latency_rec_cb)
+add_subdirectory(latency_rec)
 add_subdirectory(latency_snd)
