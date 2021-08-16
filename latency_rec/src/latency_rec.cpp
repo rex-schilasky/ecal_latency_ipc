@@ -80,8 +80,9 @@ int main(int /*argc*/, char** /*argv*/)
     // run test
     do_run();
   }
-  return(0);
 
   // finalize eCAL API
   eCAL::Finalize();
+
+  return(0);
 }
