@@ -40,6 +40,9 @@ void on_receive(const struct eCAL::SReceiveCallbackData* data_, SCallbackPar* pa
 // single test run
 void do_run()
 {
+  // initialize eCAL API
+  eCAL::Initialize(0, nullptr, "latency_rec");
+
   // subscriber
   eCAL::CSubscriber sub("ping");
 
@@ -66,21 +69,15 @@ void do_run()
 
   // evaluate all
   evaluate(cb_par.latency_array, cb_par.rec_size, warmups);
+
+  // finalize eCAL API
+  eCAL::Finalize();
 }
 
 int main(int /*argc*/, char** /*argv*/)
 {
-  // initialize eCAL API
-  eCAL::Initialize(0, nullptr, "latency_rec");
-
-  while (eCAL::Ok())
-  {
-    // run test
-    do_run();
-  }
-
-  // finalize eCAL API
-  eCAL::Finalize();
+  // run tests
+  do { do_run(); } while (eCAL::Ok());
 
   return(0);
 }

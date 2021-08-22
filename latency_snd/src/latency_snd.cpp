@@ -43,7 +43,7 @@ void do_run(const int runs, int snd_size /*kB*/, int delay /*ms*/, bool zero_cop
   std::vector<char> snd_array(snd_size * 1024);
 
   // let them match
-  eCAL::Process::SleepMS(1000);
+  eCAL::Process::SleepMS(2000);
 
   // add some extra loops for warmup :-)
   int run(0);
@@ -56,8 +56,11 @@ void do_run(const int runs, int snd_size /*kB*/, int delay /*ms*/, bool zero_cop
   }
 
   // log test
-  std::cout << "Messages sent           : " << run               << std::endl;
-  std::cout << "--------------------------------------------"    << std::endl;
+  std::cout << "Messages sent           : " << run - warmups << std::endl;
+  std::cout << "--------------------------------------------" << std::endl;
+
+  // let the receiver do the evaluation
+  eCAL::Process::SleepMS(2000);
 
   // finalize eCAL API
   eCAL::Finalize();
@@ -70,8 +73,8 @@ int main(int argc, char **argv)
     // parse command line
     TCLAP::CmdLine cmd("latency_snd");
     TCLAP::ValueArg<int> runs     ("r", "runs",      "Number of messages to send.", false, 1000, "int");
-    TCLAP::ValueArg<int> size     ("s", "size",      "Messages size in kB.",        false, 64,   "int");
-    TCLAP::ValueArg<int> delay    ("d", "delay",     "Messages send delay in ms.",  false, 10,   "int");
+    TCLAP::ValueArg<int> size     ("s", "size",      "Messages size in kB.",        false, -1,   "int");
+    TCLAP::ValueArg<int> delay    ("d", "delay",     "Messages send delay in ms.",  false, 50,   "int");
     TCLAP::SwitchArg     zero_copy("z", "zero_copy", "Switch zero copy mode on.");
     cmd.add(runs);
     cmd.add(size);
