@@ -2,6 +2,8 @@
 
 ## Specification
 
+The same physical machine (dual boot windows 10, ubuntu focal) is used for these tests.
+
 ### Windows 10
 
 ```
