@@ -3,6 +3,9 @@
 #include <tclap/CmdLine.h>
 #include <iostream>
 
+// warmup runs not to measure
+const int warmups(10);
+
 // time getter
 long long get_microseconds()
 {
@@ -40,10 +43,11 @@ void do_run(const int runs, int snd_size /*kB*/, int delay /*ms*/, bool zero_cop
   std::vector<char> snd_array(snd_size * 1024);
 
   // let them match
-  eCAL::Process::SleepMS(2000);
+  eCAL::Process::SleepMS(1000);
 
+  // add some extra loops for warmup :-)
   int run(0);
-  for (run = 0; run < runs; ++run)
+  for (run = 0; run < runs+warmups; ++run)
   {
     // get time and send message
     pub.Send(snd_array.data(), snd_array.size(), get_microseconds());

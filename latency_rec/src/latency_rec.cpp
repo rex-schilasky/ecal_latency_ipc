@@ -1,10 +1,18 @@
 #include <ecal/ecal.h>
 
+#include <algorithm>
 #include <chrono>
 #include <iostream>
 #include <mutex>
 #include <numeric>
 #include <vector>
+
+// warmup runs not to measure
+const int warmups(10);
+
+// helper
+long long get_microseconds();
+void evaluate(std::vector<long long>& lat_arr_, size_t rec_size_, size_t warmups_);
 
 // data structure for later evaluation
 struct SCallbackPar
@@ -15,13 +23,6 @@ struct SCallbackPar
   size_t                 rec_size = 0;
   size_t                 msg_num  = 0;
 };
-
-// time getter
-long long get_microseconds()
-{
-  std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-  return(std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()).count());
-}
 
 // message receive callback
 void on_receive(const struct eCAL::SReceiveCallbackData* data_, SCallbackPar* par_)
@@ -64,20 +65,7 @@ void do_run()
   sub.RemReceiveCallback();
 
   // evaluate all
-  long long sum_msg = cb_par.latency_array.size();
-  std::cout << "--------------------------------------------" << std::endl;
-  std::cout << "Messages received             : " << sum_msg  << std::endl;
-  if (sum_msg > 0)
-  {
-    long long sum_time = std::accumulate(cb_par.latency_array.begin(), cb_par.latency_array.end(), 0LL);
-    long long avg_time = sum_time / sum_msg;
-    std::cout << "Message size received         : " << cb_par.rec_size/1024 << " kB" << std::endl;
-    std::cout << "Message average latency       : " << avg_time             << " us" << std::endl;
-    std::cout << "Throughput                    : " << static_cast<int>(((cb_par.rec_size * sum_msg) / 1024.0) / (sum_time / 1000.0 / 1000.0))          << " kB/s"  << std::endl;
-    std::cout << "                              : " << static_cast<int>(((cb_par.rec_size * sum_msg) / 1024.0 / 1024.0) / (sum_time / 1000.0 / 1000.0)) << " MB/s"  << std::endl;
-    std::cout << "                              : " << static_cast<int>(sum_msg / (sum_time / 1000.0 / 1000.0))                                         << " Msg/s" << std::endl;
-  }
-  std::cout << "--------------------------------------------" << std::endl;
+  evaluate(cb_par.latency_array, cb_par.rec_size, warmups);
 }
 
 int main(int /*argc*/, char** /*argv*/)
@@ -95,4 +83,45 @@ int main(int /*argc*/, char** /*argv*/)
   eCAL::Finalize();
 
   return(0);
+}
+
+// time getter
+long long get_microseconds()
+{
+  std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+  return(std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()).count());
+}
+
+// evaluation
+void evaluate(std::vector<long long>& lat_arr_, size_t rec_size_, size_t warmups_)
+{
+  // remove warmup runs
+  if (lat_arr_.size() >= warmups_)
+  {
+    lat_arr_.erase(lat_arr_.begin(), lat_arr_.begin() + warmups_);
+  }
+
+  // evaluate all
+  long long sum_msg = lat_arr_.size();
+  std::cout << "--------------------------------------------" << std::endl;
+  std::cout << "Messages received             : " << sum_msg  << std::endl;
+  if (sum_msg > warmups)
+  {
+    long long sum_time = std::accumulate(lat_arr_.begin(), lat_arr_.end(), 0LL);
+    long long avg_time = sum_time / sum_msg;
+    auto      min_it = std::min_element(lat_arr_.begin(), lat_arr_.end());
+    auto      max_it = std::max_element(lat_arr_.begin(), lat_arr_.end());
+    size_t    min_pos = min_it - lat_arr_.begin();
+    size_t    max_pos = max_it - lat_arr_.begin();
+    long long min_time = *min_it;
+    long long max_time = *max_it;
+    std::cout << "Message size received         : " << rec_size_ / 1024 << " kB" << std::endl;
+    std::cout << "Message average latency       : " << avg_time << " us" << std::endl;
+    std::cout << "Message min latency           : " << min_time << " us @ " << min_pos << std::endl;
+    std::cout << "Message max latency           : " << max_time << " us @ " << max_pos << std::endl;
+    std::cout << "Throughput                    : " << static_cast<int>(((rec_size_ * sum_msg) / 1024.0) / (sum_time / 1000.0 / 1000.0)) << " kB/s" << std::endl;
+    std::cout << "                              : " << static_cast<int>(((rec_size_ * sum_msg) / 1024.0 / 1024.0) / (sum_time / 1000.0 / 1000.0)) << " MB/s" << std::endl;
+    std::cout << "                              : " << static_cast<int>(sum_msg / (sum_time / 1000.0 / 1000.0)) << " Msg/s" << std::endl;
+  }
+  std::cout << "--------------------------------------------" << std::endl;
 }
