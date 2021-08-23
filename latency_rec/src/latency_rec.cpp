@@ -99,10 +99,10 @@ void evaluate(std::vector<long long>& lat_arr_, size_t rec_size_, size_t warmups
   }
 
   // evaluate all
-  long long sum_msg = lat_arr_.size();
+  size_t sum_msg = lat_arr_.size();
   std::cout << "--------------------------------------------" << std::endl;
   std::cout << "Messages received             : " << sum_msg  << std::endl;
-  if (sum_msg > warmups)
+  if (sum_msg > warmups_)
   {
     long long sum_time = std::accumulate(lat_arr_.begin(), lat_arr_.end(), 0LL);
     long long avg_time = sum_time / sum_msg;
@@ -112,13 +112,13 @@ void evaluate(std::vector<long long>& lat_arr_, size_t rec_size_, size_t warmups
     size_t    max_pos = max_it - lat_arr_.begin();
     long long min_time = *min_it;
     long long max_time = *max_it;
-    std::cout << "Message size received         : " << rec_size_ / 1024 << " kB" << std::endl;
-    std::cout << "Message average latency       : " << avg_time << " us" << std::endl;
+    std::cout << "Message size received         : " << rec_size_ / 1024 << " kB"       << std::endl;
+    std::cout << "Message average latency       : " << avg_time << " us"               << std::endl;
     std::cout << "Message min latency           : " << min_time << " us @ " << min_pos << std::endl;
     std::cout << "Message max latency           : " << max_time << " us @ " << max_pos << std::endl;
-    std::cout << "Throughput                    : " << static_cast<int>(((rec_size_ * sum_msg) / 1024.0) / (sum_time / 1000.0 / 1000.0)) << " kB/s" << std::endl;
-    std::cout << "                              : " << static_cast<int>(((rec_size_ * sum_msg) / 1024.0 / 1024.0) / (sum_time / 1000.0 / 1000.0)) << " MB/s" << std::endl;
-    std::cout << "                              : " << static_cast<int>(sum_msg / (sum_time / 1000.0 / 1000.0)) << " Msg/s" << std::endl;
+    std::cout << "Throughput                    : " << static_cast<int>(((rec_size_ * sum_msg) / 1024.0) / (sum_time / 1000.0 / 1000.0))          << " kB/s"  << std::endl;
+    std::cout << "                              : " << static_cast<int>(((rec_size_ * sum_msg) / 1024.0 / 1024.0) / (sum_time / 1000.0 / 1000.0)) << " MB/s"  << std::endl;
+    std::cout << "                              : " << static_cast<int>(sum_msg / (sum_time / 1000.0 / 1000.0))                                   << " Msg/s" << std::endl;
   }
   std::cout << "--------------------------------------------" << std::endl;
 }
