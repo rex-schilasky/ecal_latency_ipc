@@ -1,7 +1,9 @@
 #include <ecal/ecal.h>
 
-#include <tclap/CmdLine.h>
+#include <chrono>
 #include <iostream>
+
+#include <tclap/CmdLine.h>
 
 // warmup runs not to measure
 const int warmups(10);
@@ -76,11 +78,11 @@ int main(int argc, char **argv)
   {
     // parse command line
     TCLAP::CmdLine cmd("latency_snd");
-    TCLAP::ValueArg<int> runs      ("r", "runs",       "Number of messages to send.",            false, 1000, "int");
-    TCLAP::ValueArg<int> size      ("s", "size",       "Messages size in kB.",                   false,   -1, "int");
-    TCLAP::ValueArg<int> delay     ("d", "delay",      "Messages send delay in ms.",             false,   50, "int");
-    TCLAP::ValueArg<int> mem_buffer("b", "mem_buffer", "Number of memory files per connection.", false,    1, "int");
-    TCLAP::SwitchArg     zero_copy ("z", "zero_copy",  "Switch zero copy mode on.");
+    TCLAP::ValueArg<int>         runs      ("r", "runs",       "Number of messages to send.",            false, 1000, "int");
+    TCLAP::ValueArg<int>         size      ("s", "size",       "Messages size in kB.",                   false,   -1, "int");
+    TCLAP::ValueArg<int>         delay     ("d", "delay",      "Messages send delay in ms.",             false,   50, "int");
+    TCLAP::ValueArg<int>         mem_buffer("b", "mem_buffer", "Number of memory files per connection.", false,    1, "int");
+    TCLAP::SwitchArg             zero_copy ("z", "zero_copy",  "Switch zero copy mode on.");
     cmd.add(runs);
     cmd.add(size);
     cmd.add(delay);
