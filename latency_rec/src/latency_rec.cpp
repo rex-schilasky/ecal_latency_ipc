@@ -82,8 +82,8 @@ int main(int argc, char** argv)
   {
     // parse command line
     TCLAP::CmdLine cmd("latency_rec");
-    TCLAP::ValueArg<int>         delay(   "d", "delay",    "Messages send delay in ms.",    false,  0, "int");
-    TCLAP::ValueArg<std::string> log_file("l", "log_file", "File to export latency array.", false, "", "string");
+    TCLAP::ValueArg<int>         delay(   "d", "delay",    "Callback process delay in ms.",     false,  0, "int");
+    TCLAP::ValueArg<std::string> log_file("l", "log_file", "Base file name to export results.", false, "", "string");
     cmd.add(delay);
     cmd.add(log_file);
     cmd.parse(argc, argv);
