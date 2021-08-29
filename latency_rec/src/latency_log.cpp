@@ -49,18 +49,24 @@ void evaluate(std::vector<long long>& lat_arr_, size_t rec_size_, size_t warmups
   std::cout << ss.str();
 
   // log into logfile (append)
-  std::ofstream ofile;
-  ofile.open(log_file_, std::ios::out | std::ios::app);
-  ofile << ss.str();
+  if (!log_file_.empty())
+  {
+    std::ofstream ofile;
+    ofile.open(log_file_, std::ios::out | std::ios::app);
+    ofile << ss.str();
+  }
 }
 
 void log2file(std::vector<long long>& lat_arr_, size_t rec_size_, std::string& log_file_)
 {
-  std::stringstream ss;
-  ss << std::setw(6) << std::setfill('0') << rec_size_ / 1024;
-  std::string rec_size_s = ss.str();
+  if (!log_file_.empty())
+  {
+    std::stringstream ss;
+    ss << std::setw(6) << std::setfill('0') << rec_size_ / 1024;
+    std::string rec_size_s = ss.str();
 
-  std::ofstream ofile(rec_size_s + "-" + log_file_);
-  std::ostream_iterator<long long>output_iterator(ofile, "\n");
-  std::copy(lat_arr_.begin(), lat_arr_.end(), output_iterator);
+    std::ofstream ofile(rec_size_s + "-" + log_file_);
+    std::ostream_iterator<long long>output_iterator(ofile, "\n");
+    std::copy(lat_arr_.begin(), lat_arr_.end(), output_iterator);
+  }
 }

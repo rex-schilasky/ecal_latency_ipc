@@ -32,7 +32,7 @@ void on_receive(const struct eCAL::SReceiveCallbackData* data_, SCallbackPar* pa
   par_->latency_array.push_back(rec_time - data_->time);
   par_->rec_size = data_->size;
   par_->msg_num++;
-
+  // delay callback
   if(delay_ > 0) std::this_thread::sleep_for(std::chrono::milliseconds(delay_));
 }
 
