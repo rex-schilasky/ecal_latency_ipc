@@ -34,7 +34,7 @@ jobs:
       run: |
         mkdir "${{ runner.workspace }}/_build"
         cd "${{ runner.workspace }}/_build"
-        cmake $GITHUB_WORKSPACE -DeCAL_ROOT="C:\eCAL"
+        cmake $GITHUB_WORKSPACE -DeCAL_ROOT="C:\eCAL\cmake"
       shell: bash
 
     - name: Build
