@@ -22,5 +22,5 @@ jobs:
 #        token: # optional
     - name: Install eCAL
       run: |
-        dir
-#        ecal_5.9.0-win64.exe
+        dir |
+        ./ecal_5.9.0-win64.exe
