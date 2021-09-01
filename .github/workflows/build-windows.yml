@@ -34,7 +34,7 @@ jobs:
       run: |
         mkdir "${{ runner.workspace }}/_build"
         cd "${{ runner.workspace }}/_build"
-        cmake $GITHUB_WORKSPACE -DCMAKE_PREFIX_PATH=c:/ecal/cmake -DeCAL_DIR=c:/ecal/lib/cmake/ecal -DCMAKE_INSTALL_PREFIX:PATH=.
+        cmake $GITHUB_WORKSPACE -DCMAKE_PREFIX_PATH=c:/ecal/cmake -DeCAL_DIR=c:/ecal/lib/cmake/ecal -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=.
       shell: bash
 
     - name: Build
