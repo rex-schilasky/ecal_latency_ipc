@@ -21,9 +21,12 @@ jobs:
 
     - name: Install eCAL
       run: |
-        ecal_5.9.0-win64.exe /SILENT |
-        dir "c:\program files" |
-        dir "c:\program files (x86)"
+        ecal_5.9.0-win64.exe /SILENT
+      shell: cmd
+
+    - name: DIR
+      run: |
+        dir "c:\"
       shell: cmd
 
     - name: Checkout
