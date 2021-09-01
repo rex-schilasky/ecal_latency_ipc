@@ -26,9 +26,9 @@ find_package(eCAL REQUIRED)
 find_package(tclap REQUIRED)
 
 set(latency_rec_src
-    src/latency_rec.cpp
-    src/latency_log.cpp
-    src/latency_log.h
+    latency_rec.cpp
+    latency_log.cpp
+    latency_log.h
 )
 
 ecal_add_sample(${PROJECT_NAME} ${latency_rec_src})

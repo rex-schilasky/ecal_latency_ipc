@@ -26,7 +26,7 @@ find_package(eCAL REQUIRED)
 find_package(tclap REQUIRED)
 
 set(latency_snd_src
-    src/latency_snd.cpp
+    latency_snd.cpp
 )
 
 ecal_add_sample(${PROJECT_NAME} ${latency_snd_src})
