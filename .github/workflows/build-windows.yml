@@ -24,11 +24,6 @@ jobs:
         ecal_5.9.0-win64.exe /SILENT
       shell: cmd
 
-    - name: DIR
-      run: |
-        dir "c:\"
-      shell: cmd
-
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -39,7 +34,7 @@ jobs:
       run: |
         mkdir "${{ runner.workspace }}/_build"
         cd "${{ runner.workspace }}/_build"
-        cmake $GITHUB_WORKSPACE
+        cmake $GITHUB_WORKSPACE -eCAL_ROOT "C:\eCAL"
       shell: bash
 
     - name: Build
