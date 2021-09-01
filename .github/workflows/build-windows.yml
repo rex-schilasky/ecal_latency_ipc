@@ -18,9 +18,24 @@ jobs:
         repo: ecal
         tag: latest
         file: ecal_5.9.0-win64.exe
-#        path: # optional
-#        token: # optional
+
     - name: Install eCAL
       run: |
-        dir |
         ./ecal_5.9.0-win64.exe
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules:  'true'
+        fetch-depth: 0
+        
+    - name: CMake
+      run: |
+        mkdir "${{ runner.workspace }}/_build"
+        cd "${{ runner.workspace }}/_build"
+        cmake $GITHUB_WORKSPACE
+      shell: bash
+
+    - name: Build
+      run: cmake --build .
+      working-directory: ${{ runner.workspace }}/_build
