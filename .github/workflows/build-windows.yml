@@ -14,9 +14,9 @@ jobs:
     - name: Download eCAL
       uses: i3h/download-release-asset@v1.3.2
       with:
-#        owner: 
-#        repo: 
-#        tag: 
-        file: https://github.com/continental/ecal/releases/download/v5.9.0/ecal_5.9.0-win64.exe
+        owner: continental
+        repo: ecal
+        tag: latest
+        file: ecal_5.9.0-win64.exe
 #        path: # optional
 #        token: # optional    
