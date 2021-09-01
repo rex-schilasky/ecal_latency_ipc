@@ -20,7 +20,6 @@ jobs:
         file: ecal_5.9.0-win64.exe
 #        path: # optional
 #        token: # optional
-
-- name: Install eCAL
+    - name: Install eCAL
       run: |
         ecal_5.9.0-win64.exe
