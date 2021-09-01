@@ -9,8 +9,14 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
-
-#    steps:
-#    - name: Install eCAL
-#      run: |
-#   https://github.com/continental/ecal/releases/download/v5.9.0/ecal_5.9.0-win64.exe
+    
+    steps:
+    - name: Download eCAL
+      uses: i3h/download-release-asset@v1.3.2
+      with:
+#        owner: 
+#        repo: 
+#        tag: 
+        file: https://github.com/continental/ecal/releases/download/v5.9.0/ecal_5.9.0-win64.exe
+#        path: # optional
+#        token: # optional    
