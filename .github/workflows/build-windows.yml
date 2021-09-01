@@ -19,4 +19,8 @@ jobs:
         tag: latest
         file: ecal_5.9.0-win64.exe
 #        path: # optional
-#        token: # optional    
+#        token: # optional
+
+- name: Install eCAL
+      run: |
+        ecal_5.9.0-win64.exe
