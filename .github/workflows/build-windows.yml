@@ -22,6 +22,7 @@ jobs:
     - name: Install eCAL
       run: |
         ./ecal_5.9.0-win64.exe
+      shell: cmd
 
     - name: Checkout
       uses: actions/checkout@v2
