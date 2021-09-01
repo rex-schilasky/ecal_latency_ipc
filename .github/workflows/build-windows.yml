@@ -34,7 +34,7 @@ jobs:
       run: |
         mkdir "${{ runner.workspace }}/_build"
         cd "${{ runner.workspace }}/_build"
-        cmake $GITHUB_WORKSPACE -DCMAKE_MODULE_PATH=c:/ecal/cmake -DeCAL_DIR=c:/ecal/lib/cmake/ecal -DProtobuf_LIBRARIES=c:/ecal/lib -DProtobuf_INCLUDE_DIR=c:/ecal/include
+        cmake $GITHUB_WORKSPACE -DCMAKE_PREFIX_PATH=c:/ecal/cmake -DeCAL_DIR=c:/ecal/lib/cmake/ecal -DProtobuf_LIBRARIES=c:/ecal/lib -DProtobuf_INCLUDE_DIR=c:/ecal/include
       shell: bash
 
     - name: Build
