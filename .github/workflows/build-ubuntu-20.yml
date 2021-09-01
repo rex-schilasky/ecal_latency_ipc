@@ -29,9 +29,9 @@ jobs:
       run: |
         mkdir "${{ runner.workspace }}/_build"
         cd "${{ runner.workspace }}/_build"
-        cmake $GITHUB_WORKSPACE
+        cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Release
       shell: bash
 
     - name: Build
-      run: cmake --build .
+      run: cmake --build . --config Release
       working-directory: ${{ runner.workspace }}/_build
