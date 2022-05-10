@@ -1,0 +1,154 @@
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 1 kB
+Message average latency       : 224 us
+Message min latency           : 76 us @ 343
+Message max latency           : 688 us @ 859
+Throughput                    : 4447 kB/s
+                              : 4 MB/s
+                              : 4447 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 2 kB
+Message average latency       : 222 us
+Message min latency           : 63 us @ 519
+Message max latency           : 529 us @ 645
+Throughput                    : 8988 kB/s
+                              : 8 MB/s
+                              : 4494 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 4 kB
+Message average latency       : 240 us
+Message min latency           : 87 us @ 310
+Message max latency           : 503 us @ 501
+Throughput                    : 16612 kB/s
+                              : 16 MB/s
+                              : 4153 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 8 kB
+Message average latency       : 245 us
+Message min latency           : 31 us @ 567
+Message max latency           : 528 us @ 453
+Throughput                    : 32573 kB/s
+                              : 31 MB/s
+                              : 4071 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 16 kB
+Message average latency       : 256 us
+Message min latency           : 86 us @ 471
+Message max latency           : 573 us @ 85
+Throughput                    : 62477 kB/s
+                              : 61 MB/s
+                              : 3904 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 32 kB
+Message average latency       : 272 us
+Message min latency           : 85 us @ 772
+Message max latency           : 608 us @ 928
+Throughput                    : 117300 kB/s
+                              : 114 MB/s
+                              : 3665 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 64 kB
+Message average latency       : 255 us
+Message min latency           : 88 us @ 111
+Message max latency           : 568 us @ 135
+Throughput                    : 250161 kB/s
+                              : 244 MB/s
+                              : 3908 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 128 kB
+Message average latency       : 297 us
+Message min latency           : 128 us @ 977
+Message max latency           : 563 us @ 90
+Throughput                    : 430869 kB/s
+                              : 420 MB/s
+                              : 3366 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 256 kB
+Message average latency       : 305 us
+Message min latency           : 154 us @ 879
+Message max latency           : 555 us @ 107
+Throughput                    : 839181 kB/s
+                              : 819 MB/s
+                              : 3278 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 512 kB
+Message average latency       : 393 us
+Message min latency           : 101 us @ 978
+Message max latency           : 702 us @ 782
+Throughput                    : 1300026 kB/s
+                              : 1269 MB/s
+                              : 2539 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 1024 kB
+Message average latency       : 542 us
+Message min latency           : 116 us @ 701
+Message max latency           : 894 us @ 33
+Throughput                    : 1886580 kB/s
+                              : 1842 MB/s
+                              : 1842 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 2048 kB
+Message average latency       : 882 us
+Message min latency           : 339 us @ 956
+Message max latency           : 1262 us @ 213
+Throughput                    : 2319625 kB/s
+                              : 2265 MB/s
+                              : 1132 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 4096 kB
+Message average latency       : 1475 us
+Message min latency           : 524 us @ 683
+Message max latency           : 1953 us @ 712
+Throughput                    : 2776450 kB/s
+                              : 2711 MB/s
+                              : 677 Msg/s
+--------------------------------------------
+shm_open failed : /ping_9683789896_shm errno: No such file or directory
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 8192 kB
+Message average latency       : 2130 us
+Message min latency           : 649 us @ 866
+Message max latency           : 2651 us @ 167
+Throughput                    : 3844985 kB/s
+                              : 3754 MB/s
+                              : 469 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 1000
+Message size received         : 16384 kB
+Message average latency       : 3948 us
+Message min latency           : 1475 us @ 582
+Message max latency           : 4309 us @ 286
+Throughput                    : 4148918 kB/s
+                              : 4051 MB/s
+                              : 253 Msg/s
+--------------------------------------------
+--------------------------------------------
+Messages received             : 0
+--------------------------------------------
